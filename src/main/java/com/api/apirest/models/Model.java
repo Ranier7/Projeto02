@@ -25,11 +25,11 @@ public class Model implements Serializable{
 	@NotNull
 	private String modelo;
 	
-	
-	public Model(String linha, String modelo) {
-		super();
-		this.linha = linha;
-		this.modelo = modelo;
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getLinha() {
 		return linha;
@@ -43,5 +43,7 @@ public class Model implements Serializable{
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+	
+	
 	
 }
