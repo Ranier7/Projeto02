@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.apirest.models.Model;
 import com.api.apirest.repository.Repository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/api")
+@Api(value="API REST Ranier")
+@CrossOrigin(origins="*")
 public class Resource{
 	
 	//private List<Model> modelo;
@@ -24,6 +30,7 @@ public class Resource{
 	Repository repository;
 	
 	@GetMapping("/modelos")
+	@ApiOperation(value="Consultar todos")
 	public List<Model> ListaMedidores(){
 		
 		/*modelo = new ArrayList<Model>();
@@ -53,11 +60,13 @@ public class Resource{
 	}
 	
 	@GetMapping("/modelos/{id}")
+	@ApiOperation(value="Consultar por ID")
 	public Model listaMedidoresUnico(@PathVariable(value="id") long id){
 		return repository.findById(id);
 	}
 	
 	@PostMapping("/modelo")
+	@ApiOperation(value="Adicionar")
 	public Model salvaModel(@RequestBody Model model) {
 		return repository.save(model);
 	}
